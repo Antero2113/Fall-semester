@@ -1,66 +1,25 @@
-﻿using Lab1;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System;
 
-namespace Lab1
+namespace Lab2
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Часть 1:");
-            Console.Write("Введите размер массива: ");
-
-            int size = int.Parse(Console.ReadLine());
-
-            var firstPart = new FirstPart(size);
-
-            Console.WriteLine("Исходный массив: ");
-            PrintVector(firstPart.Vector);
-
-            Console.WriteLine("Минимальный элемент: ");
-            Console.WriteLine(firstPart.GetMin());
-
-            Console.WriteLine("Сумма элементов между первым и последним положительными: ");
-            Console.WriteLine(firstPart.GetSumBetweenPositive());
-
-            Console.WriteLine("Сортированный массив: ");
-            firstPart.SortByZero();
-            PrintVector(firstPart.Vector);
-
-            Console.WriteLine(" ");
-            Console.WriteLine("Часть 2:");
-            var secondPart = new SecondPart(10, 10);
-            Console.WriteLine("Исходный массив: ");
-            PrintMatrix(secondPart.Matrix);
-            Console.WriteLine(secondPart.GetElement(2,3));
-
-            Console.WriteLine("Сумма элементов строк с отрицательными элементами: ");
-            Console.WriteLine(secondPart.GetSumOfRowsWithBelowZero());
-
-            Console.WriteLine("Седловые точки матрицы: ");
-            secondPart.GetSaddlePoints();
-            
-            Console.WriteLine("Седловые точки матрицы, тест: ");
-            var test = new SecondPart();
-            PrintMatrix(test.Matrix);
-            test.GetSaddlePoints();
-        }
-
-
-        static void PrintVector(IEnumerable<int> vector)
-        {
-            Console.WriteLine(string.Join(" ", vector));
-        }
-
-        static void PrintMatrix(int[,] matrix)
-        {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            var session = new WordsDictionary();
+            Console.WriteLine("Добро пожаловать в программу словаря однокоренных слов");
+            Console.WriteLine("Для завершения введите 'end'.");
+            while (true)
             {
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                Console.WriteLine(" ");
+                Console.WriteLine("Чтобы начать, введите слово на кириллице:");
+                string message = Console.ReadLine();
+                if (message == "end")
                 {
-                    Console.Write("{0,4}", matrix[i, j]);
+                    break;
                 }
-                Console.WriteLine();
+                session.Check(message);
             }
         }
     }
