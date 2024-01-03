@@ -17,6 +17,10 @@ namespace Lab2
         }
         public void Check(string currentWord)
         {
+            if (currentWord == "")
+            {
+                throw new ArgumentNullException(paramName: nameof(currentWord), message: "Слово не может быть пустым. Введите символы.");
+            }
             if (dictionary.ContainsKey(currentWord))
             {
                 KnownWord(currentWord);
@@ -26,6 +30,10 @@ namespace Lab2
                 Console.WriteLine("Неизвестное слово. Хотите его добавить в словарь?");
                 Console.WriteLine("Если да, введите корень слова: ");
                 string root = Console.ReadLine();
+                if (root == "")
+                {
+                    throw new ArgumentNullException(paramName: nameof(root), message: "Корень не может быть пустым. Введите символы.");
+                }
                 string newWord = "";
                 newWord += root;
                 Console.WriteLine("Теперь приставку: ");
