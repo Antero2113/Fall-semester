@@ -12,20 +12,20 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Äîáðî ïîæàëîâàòü â ïðîãðàììó ñëîâàðÿ îäíîêîðåííûõ ñëîâ");
+        Console.WriteLine("Добро пожаловать в программу словаря однокоренных слов");
         var session = new WordsDictionary();
         while (true)
         {
-            Console.WriteLine("Âûáåðèòå äåéñòâèå:");
-            Console.WriteLine("1. Ââîä ñëîâà");
-            Console.WriteLine("2. Ñîõðàíåíèå â JSON");
-            Console.WriteLine("3. Çàãðóçêà èç JSON");
-            Console.WriteLine("4. Ñîõðàíåíèå â XML");
-            Console.WriteLine("5. Çàãðóçêà èç XML");
-            Console.WriteLine("6. Ñîõðàíåíèå â SQLite");
-            Console.WriteLine("7. Çàãðóçêà èç SQLite");
-            Console.WriteLine("q. Âûõîä");
-            Console.WriteLine("v. Âîçâðàò ê ìåíþ");
+            Console.WriteLine("Выберите действие:");
+            Console.WriteLine("1. Ввод слова");
+            Console.WriteLine("2. Сохранение в JSON");
+            Console.WriteLine("3. Загрузка из JSON");
+            Console.WriteLine("4. Сохранение в XML");
+            Console.WriteLine("5. Загрузка из XML");
+            Console.WriteLine("6. Сохранение в SQLite");
+            Console.WriteLine("7. Загрузка из SQLite");
+            Console.WriteLine("q. Выход");
+            Console.WriteLine("v. Возврат к меню");
             Console.Write("> ");
 
             string choice = Console.ReadLine().ToLower();
@@ -56,7 +56,7 @@ class Program
                 case "q":
                     return;
                 default:
-                Console.WriteLine("Íåêîððåêòíûé âûáîð.");
+                Console.WriteLine("Некорректный выбор.");
                 break;
             }
         }
