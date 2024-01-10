@@ -29,6 +29,32 @@ namespace WebApplication1.Controllers
             return Ok();
         }
 
+        [HttpGet("xml")]
+        public ActionResult<string> GetWordsXml()
+        {
+            return _wordsDictionary.GetXml();
+        }
+
+        [HttpPost("xml")]
+        public ActionResult SaveWordsXml([FromBody] string xmlString)
+        {
+            _wordsDictionary.LoadFromXml(xmlString);
+            return Ok();
+        }
+
+        [HttpGet("sqlite")]
+        public ActionResult<List<string>> GetWordsFromSQLite()
+        {
+            return _wordsDictionary.GetWordsFromSQLite();
+        }
+
+        [HttpPost("sqlite")]
+        public ActionResult SaveWordsToSQLite()
+        {
+            _wordsDictionary.SaveWordsToSQLite();
+            return Ok();
+        }
+
         
     }
 }
