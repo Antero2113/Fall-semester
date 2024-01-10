@@ -8,7 +8,7 @@ namespace Lab2
     public class WordsDictionaryTests
     {
         [TestMethod]
-        public void Check_ПустоеСлово_ВыбрасываетИсключение()
+        public void Check_РџСѓСЃС‚РѕРµРЎР»РѕРІРѕ_Р’С‹Р±СЂР°СЃС‹РІР°РµС‚РСЃРєР»СЋС‡РµРЅРёРµ()
         {
             var session = new WordsDictionary();
 
@@ -16,11 +16,11 @@ namespace Lab2
         }
 
         [TestMethod]
-        public void Check_СуществующееСлово_ИзвестноеСловоВыводится()
+        public void Check_РЎСѓС‰РµСЃС‚РІСѓСЋС‰РµРµРЎР»РѕРІРѕ_РР·РІРµСЃС‚РЅРѕРµРЎР»РѕРІРѕР’С‹РІРѕРґРёС‚СЃСЏ()
         {
             var session = new WordsDictionary();
-            string word = "существующее";
-            session.AddToDictionary(word, "существующее-слово", "сущ");
+            string word = "СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ";
+            session.AddToDictionary(word, "СЃСѓС‰РµСЃС‚РІСѓСЋС‰РµРµ-СЃР»РѕРІРѕ", "СЃСѓС‰");
 
             using (StringWriter sw = new StringWriter())
             {
@@ -28,54 +28,54 @@ namespace Lab2
 
                 session.Check(word);
 
-                string ожидаемый = "Известные однокоренные слова:";
-                Assert.IsTrue(sw.ToString().Contains(ожидаемый));
+                string РѕР¶РёРґР°РµРјС‹Р№ = "РР·РІРµСЃС‚РЅС‹Рµ РѕРґРЅРѕРєРѕСЂРµРЅРЅС‹Рµ СЃР»РѕРІР°:";
+                Assert.IsTrue(sw.ToString().Contains(РѕР¶РёРґР°РµРјС‹Р№));
             }
         }
 
         [TestMethod]
-        public void AddToDictionary_ДобавляетВСловарь()
+        public void AddToDictionary_Р”РѕР±Р°РІР»СЏРµС‚Р’РЎР»РѕРІР°СЂСЊ()
         {
             var session = new WordsDictionary();
-            string ключ = "ключ";
-            string слово = "слово";
-            string корень = "корень";
+            string РєР»СЋС‡ = "РєР»СЋС‡";
+            string СЃР»РѕРІРѕ = "СЃР»РѕРІРѕ";
+            string РєРѕСЂРµРЅСЊ = "РєРѕСЂРµРЅСЊ";
 
-            session.AddToDictionary(ключ, слово, корень);
+            session.AddToDictionary(РєР»СЋС‡, СЃР»РѕРІРѕ, РєРѕСЂРµРЅСЊ);
 
-            Assert.IsTrue(session.dictionary.ContainsKey(ключ));
-            Assert.AreEqual(session.dictionary[ключ][0], слово);
-            Assert.AreEqual(session.dictionary[ключ][1], корень);
+            Assert.IsTrue(session.dictionary.ContainsKey(РєР»СЋС‡));
+            Assert.AreEqual(session.dictionary[РєР»СЋС‡][0], СЃР»РѕРІРѕ);
+            Assert.AreEqual(session.dictionary[РєР»СЋС‡][1], РєРѕСЂРµРЅСЊ);
         }
 
         [TestMethod]
-        public void AddToDictionary_СоСловомПриставкойИСуффиксом_ДобавляетВСловарь()
+        public void AddToDictionary_РЎРѕРЎР»РѕРІРѕРјРџСЂРёСЃС‚Р°РІРєРѕР№РРЎСѓС„С„РёРєСЃРѕРј_Р”РѕР±Р°РІР»СЏРµС‚Р’РЎР»РѕРІР°СЂСЊ()
         {
             var session = new WordsDictionary();
-            string ключ = "ключ";
-            string слово = "пример";
-            string корень = "пр";
-            string словоСПриставкой = "до-" + слово + "-суффикс";
+            string РєР»СЋС‡ = "РєР»СЋС‡";
+            string СЃР»РѕРІРѕ = "РїСЂРёРјРµСЂ";
+            string РєРѕСЂРµРЅСЊ = "РїСЂ";
+            string СЃР»РѕРІРѕРЎРџСЂРёСЃС‚Р°РІРєРѕР№ = "РґРѕ-" + СЃР»РѕРІРѕ + "-СЃСѓС„С„РёРєСЃ";
 
-            session.AddToDictionary(ключ, словоСПриставкой, корень);
+            session.AddToDictionary(РєР»СЋС‡, СЃР»РѕРІРѕРЎРџСЂРёСЃС‚Р°РІРєРѕР№, РєРѕСЂРµРЅСЊ);
 
-            Assert.IsTrue(session.dictionary.ContainsKey(ключ));
-            Assert.AreEqual(session.dictionary[ключ][0], словоСПриставкой);
-            Assert.AreEqual(session.dictionary[ключ][1], корень);
+            Assert.IsTrue(session.dictionary.ContainsKey(РєР»СЋС‡));
+            Assert.AreEqual(session.dictionary[РєР»СЋС‡][0], СЃР»РѕРІРѕРЎРџСЂРёСЃС‚Р°РІРєРѕР№);
+            Assert.AreEqual(session.dictionary[РєР»СЋС‡][1], РєРѕСЂРµРЅСЊ);
         }
 
         [TestMethod]
-        public void RemoveFromDictionary_УдаляетСловоИзСловаря()
+        public void RemoveFromDictionary_РЈРґР°Р»СЏРµС‚РЎР»РѕРІРѕРР·РЎР»РѕРІР°СЂСЏ()
         {
             var session = new WordsDictionary();
-            string ключ = "ключ";
-            string слово = "удаляемое";
+            string РєР»СЋС‡ = "РєР»СЋС‡";
+            string СЃР»РѕРІРѕ = "СѓРґР°Р»СЏРµРјРѕРµ";
 
-            session.AddToDictionary(ключ, слово, "удал");
+            session.AddToDictionary(РєР»СЋС‡, СЃР»РѕРІРѕ, "СѓРґР°Р»");
 
-            session.dictionary.Remove(ключ);
+            session.dictionary.Remove(РєР»СЋС‡);
 
-            Assert.IsFalse(session.dictionary.ContainsKey(ключ));
+            Assert.IsFalse(session.dictionary.ContainsKey(РєР»СЋС‡));
         }
     }
 }
