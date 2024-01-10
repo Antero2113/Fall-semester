@@ -1,10 +1,10 @@
 using NUnit.Framework;
 using WebApplication1.Controllers;
 
-namespace WordsControllerTests
+namespace WordsController_UnitTests
 {
     [TestFixture]
-    public class WordsControllerTests
+    public class WordsController_UnitTests
     {
         private WordsController _wordsController;
 
